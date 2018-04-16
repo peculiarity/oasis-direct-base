@@ -57,7 +57,7 @@ export const getBlock = block => {
   return promisify(web3.eth.getBlock)(block);
 }
 
-export const setFilter = (fromBlock, address) => {
+export const filterLogsByAddress = (fromBlock, address) => {
   return promisify(web3.eth.filter)({fromBlock, address});
 }
 

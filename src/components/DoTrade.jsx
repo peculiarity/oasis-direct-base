@@ -134,7 +134,7 @@ class DoTrade extends Component {
           } else {
             // Check if the transaction was replaced by a new one
             // Using logs:
-            Blockchain.setFilter(
+            Blockchain.filterLogsByAddress(
               transactions[type].checkFromBlock,
               settings.chain[this.props.network].tokens[this.props.trade.from.replace('eth', 'weth')].address
             ).then(r => {
@@ -162,7 +162,7 @@ class DoTrade extends Component {
       } else {
         if (typeof transactions[type] !== 'undefined' && typeof transactions[type].amountSell !== 'undefined' && transactions[type].amountSell.eq(-1)) {
           // Using Logs
-          Blockchain.setFilter(
+          Blockchain.filterLogsByAddress(
             transactions[type].checkFromBlock,
             settings.chain[this.props.network].tokens[this.props.trade.from.replace('eth', 'weth')].address
           ).then(logs => this.saveTradedValue('sell', logs), () => {});
@@ -176,7 +176,7 @@ class DoTrade extends Component {
         }
         if (typeof transactions[type] !== 'undefined' && typeof transactions[type].amountBuy !== 'undefined' && transactions[type].amountBuy.eq(-1)) {
           // Using Logs
-          Blockchain.setFilter(
+          Blockchain.filterLogsByAddress(
             transactions[type].checkFromBlock,
             settings.chain[this.props.network].tokens[this.props.trade.to.replace('eth', 'weth')].address
           ).then(logs => this.saveTradedValue('buy', logs), () => {});
