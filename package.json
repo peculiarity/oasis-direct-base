@@ -10,10 +10,19 @@
     "react-scripts": "1.0.14",
     "web3": "^0.20.6"
   },
+  "jest" : {
+    "collectCoverageFrom": [
+      "**/src/**/*.{js,jsx}"
+    ],
+    "coverageReporters": [
+      "text"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:coverage": "yarn test -- --coverage",
     "eject": "react-scripts eject",
     "surge": "npm run build && surge ./build/ https://oasis-direct.surge.sh"
   },
